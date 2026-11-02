@@ -23,4 +23,8 @@ class Upazila extends Model
     {
         return $this->hasMany(News::class);
     }
+    public function educationInstitutions(): HasMany
+    {
+        return $this->hasMany(EducationInstitution::class);
+    }
 }
