@@ -27,19 +27,19 @@
         <div class="collapse navbar-collapse" id="mainNav">
             <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
                        href="{{ route('home') }}">
                         হোম
                     </a>
-                </li>
+                </li> --}}
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('news.*') ? 'active' : '' }}"
                        href="{{ route('news.index') }}">
                         সর্বশেষ খবর
                     </a>
-                </li>
+                </li> --}}
 
                 {{-- Personality Menu --}}
                 <li class="nav-item">
@@ -65,6 +65,24 @@
                     <a class="nav-link {{ request()->routeIs('education-institutions.*', 'education-category.*') ? 'active' : '' }}"
                     href="{{ route('education-institutions.index') }}">
                         শিক্ষা প্রতিষ্ঠান
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('organizations.*', 'organization-category.*') ? 'active' : '' }}"
+                    href="{{ route('organizations.index') }}">
+                        সংগঠন
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('media-outlets.*', 'organization-category.*') ? 'active' : '' }}"
+                    href="{{ route('media-outlets.index') }}">
+                        মিডিয়া
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('public-directories.*', 'organization-category.*') ? 'active' : '' }}"
+                    href="{{ route('directories.index') }}">
+                        ডিরেক্টরিস
                     </a>
                 </li>
 

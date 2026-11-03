@@ -11,6 +11,9 @@ use App\Http\Controllers\PersonalityController;
 use App\Http\Controllers\HistoricalPlaceController;
 use App\Http\Controllers\DistrictInformationController;
 use App\Http\Controllers\EducationInstitutionController;
+use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\MediaOutletController;
+use App\Http\Controllers\DirectoryController;
 
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
@@ -63,6 +66,38 @@ Route::get('/education-institutions/{educationInstitution:slug}', [EducationInst
 
 Route::get('/education-category/{category:slug}', [EducationInstitutionController::class, 'category'])
     ->name('education-category.show');
+
+// Organization Routes
+Route::get('/organizations', [OrganizationController::class, 'index'])
+    ->name('organizations.index');
+
+Route::get('/organizations/{organization:slug}', [OrganizationController::class, 'show'])
+    ->name('organizations.show');
+
+Route::get('/organization-category/{category:slug}', [OrganizationController::class, 'category'])
+    ->name('organization-category.show');
+
+
+// Media Outlet Routes
+Route::get('/media-outlets', [MediaOutletController::class, 'index'])
+    ->name('media-outlets.index');
+
+Route::get('/media-outlets/{mediaOutlet:slug}', [MediaOutletController::class, 'show'])
+    ->name('media-outlets.show');
+
+Route::get('/media-outlet-category/{category:slug}', [MediaOutletController::class, 'category'])
+    ->name('media-outlet-category.show');
+
+
+// Public Directory Routes
+Route::get('/public-directory', [DirectoryController::class, 'index'])
+    ->name('directories.index');
+
+Route::get('/public-directory/{directoryEntry:slug}', [DirectoryController::class, 'show'])
+    ->name('directories.show');
+
+Route::get('/directory-category/{category:slug}', [DirectoryController::class, 'category'])
+    ->name('directory-category.show');
 
 Route::view('/about', 'pages.about')
     ->name('about');

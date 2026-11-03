@@ -28,7 +28,7 @@
         <hr class="border-light opacity-25">
 
         <div class="d-flex flex-column flex-md-row justify-content-between gap-2">
-            <small>&copy; {{ date('Y') }} মুন্সিগঞ্জ আলো। সর্বস্বত্ব সংরক্ষিত।</small>
+            <small>&copy; 2023 ~  {{ date('Y') }} মুন্সিগঞ্জ আলো। সর্বস্বত্ব সংরক্ষিত।</small>
             <small>সত্য, ইতিবাচকতা ও মানবিকতার পক্ষে।</small>
         </div>
     </div>
