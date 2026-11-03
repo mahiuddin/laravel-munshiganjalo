@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Filament\Resources\DirectoryCategories;
+
+use App\Filament\Resources\DirectoryCategories\Pages\CreateDirectoryCategory;
+use App\Filament\Resources\DirectoryCategories\Pages\EditDirectoryCategory;
+use App\Filament\Resources\DirectoryCategories\Pages\ListDirectoryCategories;
+use App\Filament\Resources\DirectoryCategories\Schemas\DirectoryCategoryForm;
+use App\Filament\Resources\DirectoryCategories\Tables\DirectoryCategoriesTable;
+use App\Models\DirectoryCategory;
+use BackedEnum;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
+use UnitEnum;
+
+class DirectoryCategoryResource extends Resource
+{
+    protected static ?string $model = DirectoryCategory::class;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedMap;
+
+    protected static string|UnitEnum|null $navigationGroup = 'Information Management';
+
+    protected static ?string $navigationLabel = 'Directory Categories';
+
+    protected static ?string $modelLabel = 'Directory Category';
+
+    protected static ?string $pluralModelLabel = 'Directory Categories';
+
+    protected static ?int $navigationSort = 10;
+
+    public static function form(Schema $schema): Schema
+    {
+        return DirectoryCategoryForm::configure($schema);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return DirectoryCategoriesTable::configure($table);
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListDirectoryCategories::route('/'),
+            'create' => CreateDirectoryCategory::route('/create'),
+            'edit' => EditDirectoryCategory::route('/{record}/edit'),
+        ];
+    }
+}

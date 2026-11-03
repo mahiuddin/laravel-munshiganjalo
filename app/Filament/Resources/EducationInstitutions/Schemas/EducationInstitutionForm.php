@@ -16,6 +16,9 @@ use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Str;
 
+use App\Enums\PublicationStatus;
+use App\Enums\VerificationStatus;
+
 class EducationInstitutionForm
 {
     public static function configure(Schema $schema): Schema
@@ -88,6 +91,8 @@ class EducationInstitutionForm
             TextInput::make('latitude'),
             TextInput::make('longitude'),
 
+
+
             FileUpload::make('featured_image')
                 ->image()
                 ->disk('public')
@@ -106,28 +111,51 @@ class EducationInstitutionForm
             Textarea::make('source')->rows(3)->columnSpanFull(),
 
             Repeater::make('images')
+                ->label('Institution Image Gallery')
                 ->relationship()
                 ->schema([
                     FileUpload::make('image')
+                        ->label('Upload Image')
                         ->image()
                         ->disk('public')
                         ->directory('education-institutions/gallery')
+                        ->imageEditor()
                         ->required(),
 
-                    TextInput::make('caption'),
+                    TextInput::make('caption')
+                        ->label('Image Caption')
+                        ->maxLength(255),
 
                     TextInput::make('sort_order')
+                        ->label('Display Order')
                         ->numeric()
-                        ->default(0),
+                        ->default(0)
+                        ->required(),
                 ])
                 ->orderColumn('sort_order')
                 ->collapsible()
                 ->reorderable()
                 ->defaultItems(0)
+                ->addActionLabel('Add Institution Image')
                 ->columnSpanFull(),
 
             TextInput::make('meta_title'),
             Textarea::make('meta_description')->rows(3)->columnSpanFull(),
+            Select::make('publication_status')
+                ->options(collect(PublicationStatus::cases())
+                    ->mapWithKeys(fn ($status) => [
+                        $status->value => ucfirst($status->value),
+                    ]))
+                ->default(PublicationStatus::DRAFT->value)
+                ->required(),
+
+            Select::make('verification_status')
+                ->options(collect(VerificationStatus::cases())
+                    ->mapWithKeys(fn ($status) => [
+                        $status->value => ucfirst($status->value),
+                    ]))
+                ->default(VerificationStatus::PENDING->value)
+                ->required(),
         ]);
     }
 }

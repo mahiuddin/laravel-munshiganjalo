@@ -13,7 +13,8 @@ return new class extends Migration {
             $table->foreignId('district_id')
                 ->unique()
                 ->constrained()
-                ->restrictOnDelete();
+                ->restrictOnDelete()
+                ->name('district_info_district_fk');
 
             $table->string('tagline')->nullable();
             $table->string('area')->nullable();
@@ -44,7 +45,8 @@ return new class extends Migration {
             $table->foreignId('verified_by')
                 ->nullable()
                 ->constrained('users')
-                ->nullOnDelete();
+                ->nullOnDelete()
+                ->name('district_info_verified_by_fk');
 
             $table->timestamp('verified_at')->nullable();
             $table->text('verification_notes')->nullable();

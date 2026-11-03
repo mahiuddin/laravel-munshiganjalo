@@ -26,6 +26,9 @@ class DatabaseSeeder extends Seeder
             PersonalityCategorySeeder::class,
             HistoricalPlaceCategorySeeder::class,
             EducationCategorySeeder::class,
+            OrganizationCategorySeeder::class,
+            MediaOutletCategorySeeder::class,
+            DirectoryCategorySeeder::class,
         ]);
     }
 }
