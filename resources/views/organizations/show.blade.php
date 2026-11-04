@@ -51,23 +51,39 @@
                         <p class="lead">{{ $organization->short_description }}</p>
                     @endif
 
-                    @if($organization->description)
+
+                    @php
+                        $description = trim(strip_tags($organization->description ?? ''));
+                    @endphp
+
+                    @if($description !== '')
                         <hr>
-                        <h4 class="fw-bold">সংগঠন সম্পর্কে</h4>
-                        <div>{!! nl2br(e($organization->description)) !!}</div>
+                        <h4 class="fw-bold">প্রতিষ্ঠান সম্পর্কে</h4>
+                        <div>{!! $organization->description !!}</div>
                     @endif
 
-                    @if($organization->activities)
+
+                    @php
+                        $activities = trim(strip_tags($organization->activities ?? ''));
+                    @endphp
+
+                    @if($activities !== '')
                         <hr>
                         <h4 class="fw-bold">কার্যক্রম</h4>
-                        <div>{!! nl2br(e($organization->activities)) !!}</div>
+                        <div>{!! $organization->activities !!}</div>
                     @endif
 
-                    @if($organization->services)
+                    @php
+                        $services = trim(strip_tags($organization->services ?? ''));
+                    @endphp
+
+                    @if($services !== '')
                         <hr>
                         <h4 class="fw-bold">সেবাসমূহ</h4>
-                        <div>{!! nl2br(e($organization->services)) !!}</div>
+                        <div>{!! $organization->services !!}</div>
                     @endif
+
+                    
 
                     @if($organization->source)
                         <hr>

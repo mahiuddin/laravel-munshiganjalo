@@ -52,16 +52,24 @@
                         <p class="lead">{{ $directoryEntry->short_description }}</p>
                     @endif
 
-                    @if($directoryEntry->description)
+                    @php
+                        $description = trim(strip_tags($directoryEntry->description ?? ''));
+                    @endphp
+
+                    @if($description !== '')
                         <hr>
                         <h4 class="fw-bold">প্রতিষ্ঠান সম্পর্কে</h4>
-                        <div>{!! nl2br(e($directoryEntry->description)) !!}</div>
+                        <div>{!! $directoryEntry->description !!}</div>
                     @endif
 
-                    @if($directoryEntry->services)
+                    @php
+                        $services = trim(strip_tags($directoryEntry->services ?? ''));
+                    @endphp
+
+                    @if($services !== '')
                         <hr>
                         <h4 class="fw-bold">সেবাসমূহ</h4>
-                        <div>{!! nl2br(e($directoryEntry->services)) !!}</div>
+                        <div>{!! $directoryEntry->services !!}</div>
                     @endif
 
                     @if($directoryEntry->opening_hours)
